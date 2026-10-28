@@ -62,9 +62,40 @@ docs/experiments/              # 比較実験の記録
 
 受け入れ条件は対象プラグインの要求から選びます。セットアップ・メンテナンス拡張では、依頼書のAC-01〜15を用いて、新規・既存構成、再実行、手動変更、部分失敗などを検証します。他の拡張には、その振る舞いに合った条件を定めます。
 
-文書変更ではリンク、コマンドの正確さ、正本との整合性を確認します。実装を導入したら実際のbuild・テスト・実行コマンドを文書化し、必要な検証を追加します。現時点ではbuildシステム、テスト基盤、言語固有のformatter・linterはありません。
+文書変更ではリンク、コマンドの正確さ、正本との整合性を確認します。実装を導入したら実際のbuild・テスト・実行コマンドを文書化し、必要な検証を追加します。開発用のformatter・linterにはRuffを使います。buildシステム、テスト基盤はありません。
 
 検証結果は成功・失敗・未実行・対象外を区別し、未確認事項と次に必要な確認を示します。
+
+### Pythonの整形・lint
+
+Ruffはこのリポジトリの開発用ツールです。バージョンは[requirements-dev.txt](../requirements-dev.txt)、設定は[ruff.toml](../ruff.toml)で管理します。Python 3.10を対象に、基本的なエラー検出とimport順序のルールを適用し、formatは既定値を使います。
+
+初回はリポジトリルートで仮想環境を用意します。
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements-dev.txt
+```
+
+Pythonファイルの追加・編集後は、変更したファイルだけを指定して実行します。以下のパスは対象のファイルへ置き換えてください。
+
+```sh
+.venv/bin/ruff check --fix path/to/script.py
+.venv/bin/ruff format path/to/script.py
+.venv/bin/ruff check path/to/script.py
+.venv/bin/ruff format --check path/to/script.py
+```
+
+自動修正後も残るlintエラーはコードを修正し、最後の2つの確認が成功するまで繰り返します。`--unsafe-fixes` は使いません。Windowsでは `.venv/bin/` を `.venv/Scripts/` に読み替えます。
+
+全Pythonファイルを変更せず確認する場合は、次を実行します。
+
+```sh
+.venv/bin/ruff check .
+.venv/bin/ruff format --check .
+```
+
+この手順は[AGENTS.md](../AGENTS.md)から常設指示として適用します。skillの選択やhooksの実行を前提にせず、エージェントが編集後にコマンドを実行する運用です。Ruffと仮想環境はプラグインの配布・実行時依存に含めません。
 
 ## 未決定事項
 
