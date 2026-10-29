@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "repo-environment",
+  "version": "0.1.0",
+  "description": "リポジトリに合わせたAI開発環境のセットアップとメンテナンス。拡張の選定とローカルの関連リポジトリ参照を含む。"
+}
