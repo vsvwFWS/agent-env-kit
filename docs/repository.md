@@ -16,7 +16,9 @@ agent-env-kit/
 ├── AGENTS.md                  # このリポジトリでの作業指示
 ├── PROJECT_BRIEF.md            # 最初の拡張の要求
 ├── docs/
-│   └── repository.md          # 構成・運用方針
+│   ├── repository.md          # 構成・運用方針
+│   └── plugins/
+│       └── repo-environment/  # 最初のプラグインの開発用要求・設計資料
 ├── plugins/
 │   └── repo-environment/      # 最初のプラグインの配布対象
 └── tests/
@@ -25,12 +27,15 @@ agent-env-kit/
 将来の配置:
 plugins/<plugin-name>/         # 追加するプラグインの配布対象
 tests/<plugin-name>/           # 追加するプラグインの検証手順・fixtures
+docs/plugins/<plugin-name>/    # 追加するプラグインの開発用要求・設計資料
 docs/experiments/              # 比較実験の記録
 ```
 
 各プラグインの内部構成は提供形式の確認後に決めます。最初の[Repo Environment](../plugins/repo-environment/README.md)はmanifest、2つのskills、共通の参考資料で構成します。利用者向けのREADMEには、用途、導入、利用、更新、無効化・削除、制約を実装に合わせて記載します。実行時に必要な手順や参考資料もプラグイン内に置き、親の開発資料への参照を実行の前提にしません。
 
 配布元の開発資料、検証用ファイル、導入先に生成する成果物は、それぞれの役割を区別します。導入先へリポジトリ全体をコピーせず、採用した配布方式で必要な対象だけを提供します。
+
+`docs/plugins/<plugin-name>/` は、プラグイン別の開発用要求・課題・設計資料を置く場所です。現在はRepo Environmentの[開発フロー支援の要件・課題](plugins/repo-environment/development-workflow.md)を管理します。利用時に必要な文書は配布対象の `plugins/<plugin-name>/`、検証手順と結果は `tests/<plugin-name>/`、比較実験の仮説と採否は `docs/experiments/` で扱います。資料が必要になった段階で追加し、空の将来用フォルダは作りません。
 
 ## プラグインと比較実験の単位
 
@@ -49,6 +54,7 @@ docs/experiments/              # 比較実験の記録
 | [AGENTS.md](../AGENTS.md) | このリポジトリで作業する際の短い指示と検証の入口 |
 | この文書 | 配置、開発・文書管理の方針、リポジトリ全体の重要な判断と理由 |
 | [PROJECT_BRIEF.md](../PROJECT_BRIEF.md) | セットアップ・メンテナンス拡張の要求、提案、未決定事項、受け入れ条件 |
+| プラグイン別の開発資料 | `docs/plugins/<plugin-name>/` に置く要求・課題・設計。[開発フロー支援の要件・課題](plugins/repo-environment/development-workflow.md)は開発依頼書を補足し、今回追加する要求・課題・設計案を管理する |
 | 各プラグインのREADME・仕様 | そのプラグインの利用方法と具体化した振る舞い |
 | 実験記録 | 比較の仮説、条件、結果、採否と理由 |
 
@@ -103,4 +109,4 @@ Pythonファイルの追加・編集後は、変更したファイルだけを�
 
 ## 未決定事項
 
-提供形式や対応環境はプラグインごとに決めます。Repo Environmentの確定要求と未決定事項は[開発依頼書](../PROJECT_BRIEF.md)、現在の配布手順は[配布README](../plugins/repo-environment/README.md)を正本とします。初期のデスクトップ実動検証、OS・WSL・バージョン範囲の確認が残っています。
+提供形式や対応環境はプラグインごとに決めます。Repo Environmentの確定要求と未決定事項は[開発依頼書](../PROJECT_BRIEF.md)と対象範囲を明記した補足文書、現在の配布手順は[配布README](../plugins/repo-environment/README.md)を正本とします。初期のデスクトップ実動検証、OS・WSL・バージョン範囲の確認が残っています。
