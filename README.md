@@ -18,7 +18,7 @@ AI開発ワークフローを改善するためのプラグインを開発・管
 
 ## 文書の入口
 
-- 利用を検討する方：[プラグインのREADME](plugins/repo-environment/README.md)で導入・利用方法と制約、[開発依頼書](PROJECT_BRIEF.md)で要求を確認できます。
+- 利用を検討する方：[導入で期待できること（図解）](docs/plugins/repo-environment/overview.md)で全体像、[プラグインのREADME](plugins/repo-environment/README.md)で導入・利用方法と制約、[開発依頼書](PROJECT_BRIEF.md)で要求を確認できます。
 - 開発する方：[構成・運用方針](docs/repository.md)で配置、文書の正本、実験・検証の進め方を確認してください。
 - 作業するエージェント：[AGENTS.md](AGENTS.md)に、このリポジトリでの判断規則と検証の入口があります。
 
