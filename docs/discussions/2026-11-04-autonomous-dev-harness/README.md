@@ -24,4 +24,11 @@ AIを自律的に動かしつつ、要所で人間が判断・レビューでき
 
 ## 比較と次の判断
 
-3つのレビューの比較と統合した設計案は[design-proposal.md](design-proposal.md)にまとめた。次は、同文書の[前提とする判断](design-proposal.md#21-前提とする判断要合意)を合意し、採用した内容を要求文書へ移す。
+3つのレビューの比較と統合した設計案は[design-proposal.md](design-proposal.md)にまとめた。
+
+| 日付 | 移転した内容 | 移転先 |
+| --- | --- | --- |
+| 2026-11-07 | [前提とする判断](design-proposal.md#21-前提とする判断要合意)の5項目を推奨案で合意 | [開発フロー支援の要件・課題の自律開発とレビューの前提](../../plugins/repo-environment/development-workflow.md#自律開発とレビューの前提) |
+| 2026-11-07 | [導入先の委任・レビュー方針](design-proposal.md#24-導入先の委任レビュー方針)の4区分（未合意） | [同文書の未合意の設計案](../../plugins/repo-environment/development-workflow.md#委任レビュー方針) |
+
+次は段階1の準備として、実装・修正の一周を試す小規模な既存リポジトリを選ぶ。
